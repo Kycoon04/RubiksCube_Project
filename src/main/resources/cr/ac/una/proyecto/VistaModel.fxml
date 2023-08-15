@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<HBox xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.controller.VistaModelController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="AnchoPancho" prefHeight="620.0" stylesheets="@style.css">
+         <children>
+            <ImageView fitHeight="780.0" fitWidth="1180.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../resources/PantallaJuego.jpg" />
+               </image>
+            </ImageView>
+            <GridPane fx:id="Face2" layoutX="522.0" layoutY="247.0" prefHeight="156.0" prefWidth="156.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane fx:id="Face3" layoutX="678.0" layoutY="247.0" prefHeight="156.0" prefWidth="156.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane fx:id="Face4" layoutX="628.0" layoutY="153.0" prefHeight="156.0" prefWidth="156.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane fx:id="Face1" layoutX="366.0" layoutY="247.0" prefHeight="156.0" prefWidth="156.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane fx:id="Face0" layoutX="522.0" layoutY="91.0" prefHeight="156.0" prefWidth="156.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane fx:id="Face5" layoutX="522.0" layoutY="403.0" prefHeight="156.0" prefWidth="156.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <Button layoutX="1083.0" layoutY="680.0" mnemonicParsing="false" onAction="#R" prefHeight="64.0" prefWidth="63.0" text="R">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="1005.0" layoutY="680.0" mnemonicParsing="false" onAction="#L" prefHeight="64.0" prefWidth="63.0" text="L">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="927.0" layoutY="680.0" mnemonicParsing="false" onAction="#F" prefHeight="64.0" prefWidth="63.0" text="F">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="849.0" layoutY="680.0" mnemonicParsing="false" onAction="#D" prefHeight="64.0" prefWidth="63.0" text="D">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="771.0" layoutY="680.0" mnemonicParsing="false" onAction="#B" prefHeight="64.0" prefWidth="63.0" text="B">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="693.0" layoutY="680.0" mnemonicParsing="false" onAction="#U" prefHeight="64.0" prefWidth="63.0" text="U">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="1083.0" layoutY="601.0" mnemonicParsing="false" onAction="#RPrima" prefHeight="64.0" prefWidth="63.0" text="R'">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="1005.0" layoutY="601.0" mnemonicParsing="false" onAction="#LPrima" prefHeight="64.0" prefWidth="63.0" text="L'">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="927.0" layoutY="601.0" mnemonicParsing="false" onAction="#FPrima" prefHeight="64.0" prefWidth="63.0" text="F'">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="849.0" layoutY="601.0" mnemonicParsing="false" onAction="#DPrima" prefHeight="64.0" prefWidth="63.0" text="D'">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="771.0" layoutY="601.0" mnemonicParsing="false" onAction="#BPrima" prefHeight="64.0" prefWidth="63.0" text="B'">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="693.0" layoutY="601.0" mnemonicParsing="false" onAction="#UPrima" prefHeight="64.0" prefWidth="63.0" text="U'">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button id="btnOption" layoutX="21.0" layoutY="633.0" mnemonicParsing="false" onMouseClicked="#unSolveCube" text="Change" />
+            <Button id="btnOption" layoutX="144.0" layoutY="633.0" mnemonicParsing="false" onMouseClicked="#solveCube" text="Solve" />
+            <Button id="btnOption" layoutX="239.0" layoutY="633.0" mnemonicParsing="false" onAction="#actionPerformed" text="Pasos" />
+            <TextArea fx:id="Movements" layoutX="340.0" layoutY="632.0" prefHeight="37.0" prefWidth="208.0" />
+            <TextArea fx:id="stepsP" layoutX="340.0" layoutY="682.0" prefHeight="47.0" prefWidth="208.0" />
+            <Text fx:id="Cronometro" fill="WHITE" layoutX="26.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Text>
+            <Text fx:id="Jugador" fill="WHITE" layoutX="21.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jugador: ">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+            <GridPane fx:id="FaceMini0" layoutX="105.0" layoutY="364.0" prefHeight="78.0" prefWidth="78.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane fx:id="FaceMini1" layoutX="32.0" layoutY="442.0" prefHeight="78.0" prefWidth="78.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane fx:id="FaceMini2" layoutX="105.0" layoutY="442.0" prefHeight="78.0" prefWidth="78.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane fx:id="FaceMini3" layoutX="183.0" layoutY="442.0" prefHeight="78.0" prefWidth="78.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane fx:id="FaceMini4" layoutX="261.0" layoutY="442.0" prefHeight="78.0" prefWidth="78.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane fx:id="FaceMini5" layoutX="105.0" layoutY="520.0" prefHeight="78.0" prefWidth="78.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <Button fx:id="help" layoutX="1003.0" layoutY="18.0" mnemonicParsing="false" onMouseClicked="#help" prefHeight="51.0" prefWidth="88.0" text="?" />
+            <ImageView fx:id="imgHelp" fitHeight="253.0" fitWidth="239.0" layoutX="927.0" layoutY="91.0" pickOnBounds="true" visible="false">
+               <image>
+                  <Image url="@../resources/Captura.PNG" />
+               </image>
+            </ImageView>
+            <Button layoutX="145.0" layoutY="712.0" mnemonicParsing="false" onMouseClicked="#saveGame" text="Save" />
+            <Text fx:id="Jugador1" fill="WHITE" layoutX="22.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Points: ">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>

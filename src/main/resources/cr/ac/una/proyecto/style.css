@@ -1,0 +1,79 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 8 ago. 2023, 17:02:40
+    Author     : ander
+*/
+
+
+.button#btnPlay{
+    -fx-font-family: "TT Autonomous";
+    -fx-text-fill: white;
+    -fx-font-style: italic;
+    -fx-font-size: 50px;
+    -fx-border-radius: 10;
+    -fx-background-radius: 30px;
+    -fx-padding: 4 8 7 7;
+    -fx-background-color:transparent;
+    -fx-transition: background-color 0.3s ease-in-out;
+}
+.button#btnPlay:hover {
+    -fx-background-color:darkkhaki;
+    -fx-font-size: 40px;
+}
+.button#btnPlay:pressed {
+    -fx-background-color:burlywood;
+    -fx-text-fill:brown;
+    -fx-font-weight: bold;
+}
+.button{
+    -fx-font-family: "TT Autonomous";
+    -fx-text-fill:black;
+    -fx-font-style: italic;
+    -fx-font-size: 28px;
+    -fx-border-radius: 15;
+    -fx-background-radius: 30px;
+    -fx-padding: 4 8 7 7;
+    -fx-background-color:white;
+    -fx-transition: background-color 0.3s ease-in-out;
+}
+.button:hover {
+    -fx-background-color:slategrey;
+    -fx-font-size: 23px;
+}
+.button:pressed {
+    -fx-background-color:burlywood;
+    -fx-text-fill:brown;
+    -fx-font-weight: bold;
+}
+.button#btnOption{
+    -fx-font-family: "TT Autonomous";
+    -fx-text-fill:black;
+    -fx-font-style: italic;
+    -fx-font-size: 25px;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15px;
+    -fx-padding: 4 8 7 7;
+    -fx-background-color:white;
+    -fx-transition: background-color 0.3s ease-in-out;
+}
+.button#btnOption:hover {
+    -fx-background-color:slategrey;
+    -fx-font-size: 23px;
+}
+.button#btnOption:pressed {
+    -fx-background-color:burlywood;
+    -fx-text-fill:brown;
+    -fx-font-weight: bold;
+}
+.label{
+    -fx-background-color:transparent;
+    -fx-text-fill:white;
+    -fx-font-family: "Times New Roman";
+    -fx-font-size: 40px;
+    -fx-padding: 5 0 5 0;
+    -fx-font-style: italic;
+    -fx-background-radius: 10 10 10 10;
+}

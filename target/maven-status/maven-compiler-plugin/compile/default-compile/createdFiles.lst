@@ -1,0 +1,11 @@
+cr\ac\una\proyecto\model\Colors.class
+cr\ac\una\proyecto\App.class
+cr\ac\una\controller\MainViewController.class
+cr\ac\una\controller\VistaModelController$SmartGroup.class
+cr\ac\una\proyecto\model\Movements.class
+cr\ac\una\util\FlowController.class
+module-info.class
+cr\ac\una\util\TextCSV.class
+cr\ac\una\controller\Controller.class
+cr\ac\una\controller\VistaModelController.class
+cr\ac\una\proyecto\model\CubeRubik.class
