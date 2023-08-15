@@ -43,7 +43,7 @@ public class TextCSV {
 
         String ruta = absolutePath("lista.txt");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta))) {
-            for (Integer item : datalist) {
+            for (Integer item : data) {
                 writer.write(item.toString());
                 writer.newLine();
             }
@@ -58,7 +58,7 @@ public class TextCSV {
 
         String ruta = absolutePath("pila.txt");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta))) {
-            for (Integer item : Stackdata) {
+            for (Integer item : data) {
                 writer.write(item.toString());
                 writer.newLine();
             }
