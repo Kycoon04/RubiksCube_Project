@@ -139,7 +139,7 @@ public class MainViewController implements Initializable {
 
     public Rectangle Pintar(GridPane Face, int i, int j, int k) {
         Rectangle cell = new Rectangle(52, 52, getColorFromString(i, j, k));
-        cell.setStroke(Color.BLACK);
+        cell.setStroke(Color.WHITE);
         cell.setStrokeWidth(2);
         cell.setOnMouseClicked(event -> {
             if (ColorSelected != null) {
