@@ -77,3 +77,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-font-style: italic;
     -fx-background-radius: 10 10 10 10;
 }
+.table-view {
+    -fx-background-color:transparent; /* Color de fondo de la tabla */
+}
+
+.table-view .column-header-background {
+    -fx-background-color:red; /* Color de fondo de los encabezados de columna */
+}
+.table-view .column-header .label {
+    -fx-text-fill: white; /* Color del texto de los encabezados de columna */
+    -fx-background-radius: 0 0 0 0;
+    -fx-background-color:slategray;
+    -fx-font-size: 20px;
+}
+
+.table-view .table-cell {
+    -fx-text-fill:white; /* Color del texto de las celdas */
+}

@@ -5,6 +5,7 @@
 package cr.ac.una.util;
 
 import cr.ac.una.proyecto.model.CubeRubik;
+import cr.ac.una.proyecto.model.User;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -27,10 +28,11 @@ import javafx.scene.shape.Rectangle;
  * @author Dilan
  */
 public class TextCSV {
- CubeRubik[][][] cubeArray = new CubeRubik[3][3][3];
- Stack<Integer> Stackdata = new Stack<>(); 
- ArrayList<Integer> datalist = new ArrayList<>();
- 
+
+    CubeRubik[][][] cubeArray = new CubeRubik[3][3][3];
+    Stack<Integer> Stackdata = new Stack<>();
+    ArrayList<Integer> datalist = new ArrayList<>();
+
     public String absolutePath(String filename) {
 
         String currentDirectory = System.getProperty("user.dir");
@@ -38,7 +40,6 @@ public class TextCSV {
         return fullPath;
     }
 
-  
     public void saveList(List<Integer> data) {
 
         String ruta = absolutePath("lista.txt");
@@ -62,7 +63,7 @@ public class TextCSV {
                 writer.write(item.toString());
                 writer.newLine();
             }
-   
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -70,7 +71,7 @@ public class TextCSV {
 
     public void loadList() {
         String ruta = absolutePath("lista.txt");
-      
+
         try (BufferedReader reader = new BufferedReader(new FileReader(ruta))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -88,12 +89,12 @@ public class TextCSV {
         } catch (IOException e) {
             e.printStackTrace();
         }
-      
+
     }
 
     public void loadStack() {
         String ruta = absolutePath("pila.txt");
-    
+
         try (BufferedReader reader = new BufferedReader(new FileReader(ruta))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -111,10 +112,10 @@ public class TextCSV {
         } catch (IOException e) {
             e.printStackTrace();
         }
-       
+
     }
 
-    public  void saveCube(CubeRubik[][][] cubeArray) {
+    public void saveCube(CubeRubik[][][] cubeArray) {
         String ruta = absolutePath("colors.txt");
         try (FileWriter writer = new FileWriter(ruta)) {
             for (int i = 0; i < cubeArray.length; i++) {
@@ -126,7 +127,7 @@ public class TextCSV {
                             String color1 = cube.getColor_1();
                             String color2 = cube.getColor_2();
                             String color3 = cube.getColor_3();
-                            
+
                             String line = i + "," + j + "," + k + "," + identifier + "," + color1 + "," + color2 + "," + color3;
                             writer.write(line + "\n");
                         }
@@ -137,8 +138,8 @@ public class TextCSV {
             e.printStackTrace();
         }
     }
-    
-     public void loadCube() {
+
+    public void loadCube() {
         String ruta = absolutePath("colors.txt");
 
         try (BufferedReader reader = new BufferedReader(new FileReader(ruta))) {
@@ -152,37 +153,71 @@ public class TextCSV {
                 String color1 = parts[4];
                 String color2 = parts[5];
                 String color3 = parts[6];
-                
+
                 CubeRubik cube = new CubeRubik(identifier);
                 cube.setColor_1(color1);
                 cube.setColor_2(color2);
                 cube.setColor_3(color3);
-                
+
                 cubeArray[i][j][k] = cube;
-               
+
                 System.out.println("Cube at (" + i + "," + j + "," + k + "): ");
-                        System.out.println("Identifier: " + identifier);
-                        System.out.println("Color 1: " + color1);
-                        System.out.println("Color 2: " + color2);
-                        System.out.println("Color 3: " + color3);
-                        System.out.println();
+                System.out.println("Identifier: " + identifier);
+                System.out.println("Color 1: " + color1);
+                System.out.println("Color 2: " + color2);
+                System.out.println("Color 3: " + color3);
+                System.out.println();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-      rellenarMatrizCube(); 
-     }
-     
-     public void rellenarMatrizCube(){
-         
-         for(int i=0; i<3; i++){
-             for(int j=0; j<3; j++){
-                for(int k=0; k<3; k++){
-                FlowController.getInstance().Cube[i][j][k]=cubeArray[i][j][k];
-               }  
-             }
-         }
-         FlowController.getInstance().pila1= Stackdata; 
-         FlowController.getInstance().numeros= datalist; 
-     }
+        rellenarMatrizCube();
+    }
+
+    public void rellenarMatrizCube() {
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                for (int k = 0; k < 3; k++) {
+                    FlowController.getInstance().Cube[i][j][k] = cubeArray[i][j][k];
+                }
+            }
+        }
+        FlowController.getInstance().pila1 = Stackdata;
+        FlowController.getInstance().numeros = datalist;
+    }
+
+    public void saveUser(User player) {
+        String ruta = absolutePath("currentPlayer.txt");
+        try (FileWriter writer = new FileWriter(ruta)) {
+            String line = player.getName();
+            line += ";" + player.getMovements();
+            line += ";" + player.getTime();
+            line += ";" + player.getScore();
+
+            writer.write(line);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public User loadUser() {
+        User currentUser = new User();
+        String ruta = absolutePath("currentPlayer.txt");
+        String line;
+        try (BufferedReader reader = new BufferedReader(new FileReader(ruta))) {
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(";");
+                currentUser.setName(parts[0]);
+                currentUser.setMovements(Integer.parseInt(parts[1]));
+                currentUser.setTime(parts[2]);
+                currentUser.setScore(Integer.parseInt(parts[3]));
+            }
+            
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return currentUser;
+    }
 }

@@ -2,6 +2,7 @@ package cr.ac.una.controller;
 
 import cr.ac.una.proyecto.App;
 import cr.ac.una.proyecto.model.Movements;
+import cr.ac.una.proyecto.model.User;
 import cr.ac.una.util.FlowController;
 import static cr.ac.una.util.FlowController.Cube;
 import cr.ac.una.util.TextCSV;
@@ -31,10 +32,12 @@ import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
@@ -66,19 +69,6 @@ public class VistaModelController implements Initializable {
     private Text Cronometro;
     @FXML
     private Text Jugador;
-   private boolean isHelpVisible = false;
-    int HEIGHT = 620;
-    int WEIGHT = 1180;
-    int Segundos = 0;
-    int minutos = 0;
-
-    private Movements Moviment = new Movements();
- 
-    private double anchorX, anchorY;
-    private double anchorAngleX = 0;
-    private double anchorAngleY = 0;
-    private final DoubleProperty angleX = new SimpleDoubleProperty(0);
-    private final DoubleProperty angleY = new SimpleDoubleProperty(0);
     @FXML
     private AnchorPane AnchoPancho;
     @FXML
@@ -98,15 +88,34 @@ public class VistaModelController implements Initializable {
     @FXML
     private ImageView imgHelp;
     @FXML
-    private Text Jugador1;
+    private BorderPane ViewGame;
+    @FXML
+    private BorderPane ViewName;
+    @FXML
+    private TextField TextField;
+    @FXML
+    private BorderPane ViewOpGame;
+    private boolean isHelpVisible = false;
+    int HEIGHT = 620;
+    int WEIGHT = 1180;
+    int Segundos = 0;
+    int minutos = 0;
+
+    private Movements Moviment = new Movements();
+
+    private double anchorX, anchorY;
+    private double anchorAngleX = 0;
+    private double anchorAngleY = 0;
+    private final DoubleProperty angleX = new SimpleDoubleProperty(0);
+    private final DoubleProperty angleY = new SimpleDoubleProperty(0);
+    private User currentPlayer = new User("Jugador1", 0, "0:00", 0);
+    private int movement=0;
+    @FXML
+    private Text TextMov;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        PintarFaces();
-        PintarFacesMini();
-        Contador();
-        Jugador.setText("Jugador: " + FlowController.getInstance().getNombreJugador());
-        Cube3D();
+
     }
 
     void Contador() {
@@ -271,6 +280,7 @@ public class VistaModelController implements Initializable {
         PintarFacesMini();
         FlowController.getInstance().numeros.add(1);
         GetPasos();
+        IncreaseMovement();
     }
 
     @FXML
@@ -279,8 +289,9 @@ public class VistaModelController implements Initializable {
         Moviment.SpinL(FlowController.getInstance().Cube, false);
         PintarFaces();
         PintarFacesMini();
-         FlowController.getInstance().numeros.add(11);
+        FlowController.getInstance().numeros.add(11);
         GetPasos();
+        IncreaseMovement();
     }
 
     @FXML
@@ -289,8 +300,9 @@ public class VistaModelController implements Initializable {
         Moviment.SpinF(FlowController.getInstance().Cube, false);
         PintarFaces();
         PintarFacesMini();
-         FlowController.getInstance().numeros.add(9);
+        FlowController.getInstance().numeros.add(9);
         GetPasos();
+        IncreaseMovement();
     }
 
     @FXML
@@ -299,8 +311,9 @@ public class VistaModelController implements Initializable {
         Moviment.SpinD(FlowController.getInstance().Cube, false);
         PintarFaces();
         PintarFacesMini();
-         FlowController.getInstance().numeros.add(5);
+        FlowController.getInstance().numeros.add(5);
         GetPasos();
+        IncreaseMovement();
     }
 
     @FXML
@@ -309,8 +322,9 @@ public class VistaModelController implements Initializable {
         Moviment.SpinB(FlowController.getInstance().Cube, false);
         PintarFaces();
         PintarFacesMini();
-         FlowController.getInstance().numeros.add(7);
+        FlowController.getInstance().numeros.add(7);
         GetPasos();
+        IncreaseMovement();
     }
 
     @FXML
@@ -319,8 +333,9 @@ public class VistaModelController implements Initializable {
         Moviment.SpinU(FlowController.getInstance().Cube, false);
         PintarFaces();
         PintarFacesMini();
-         FlowController.getInstance().numeros.add(3);
+        FlowController.getInstance().numeros.add(3);
         GetPasos();
+        IncreaseMovement();
     }
 
     @FXML
@@ -329,8 +344,9 @@ public class VistaModelController implements Initializable {
         Moviment.SpinR(FlowController.getInstance().Cube, true);
         PintarFaces();
         PintarFacesMini();
-         FlowController.getInstance().numeros.add(2);
+        FlowController.getInstance().numeros.add(2);
         GetPasos();
+        IncreaseMovement();
     }
 
     @FXML
@@ -339,8 +355,9 @@ public class VistaModelController implements Initializable {
         Moviment.SpinL(FlowController.getInstance().Cube, true);
         PintarFaces();
         PintarFacesMini();
-         FlowController.getInstance().numeros.add(12);
+        FlowController.getInstance().numeros.add(12);
         GetPasos();
+        IncreaseMovement();
     }
 
     @FXML
@@ -349,8 +366,9 @@ public class VistaModelController implements Initializable {
         Moviment.SpinF(FlowController.getInstance().Cube, true);
         PintarFaces();
         PintarFacesMini();
-         FlowController.getInstance().numeros.add(10);
+        FlowController.getInstance().numeros.add(10);
         GetPasos();
+        IncreaseMovement();
     }
 
     @FXML
@@ -359,8 +377,9 @@ public class VistaModelController implements Initializable {
         Moviment.SpinD(FlowController.getInstance().Cube, true);
         PintarFaces();
         PintarFacesMini();
-         FlowController.getInstance().numeros.add(6);
+        FlowController.getInstance().numeros.add(6);
         GetPasos();
+        IncreaseMovement();
     }
 
     @FXML
@@ -369,8 +388,9 @@ public class VistaModelController implements Initializable {
         Moviment.SpinB(FlowController.getInstance().Cube, true);
         PintarFaces();
         PintarFacesMini();
-         FlowController.getInstance().numeros.add(8);
+        FlowController.getInstance().numeros.add(8);
         GetPasos();
+        IncreaseMovement();
     }
 
     @FXML
@@ -379,10 +399,14 @@ public class VistaModelController implements Initializable {
         Moviment.SpinU(FlowController.getInstance().Cube, true);
         PintarFaces();
         PintarFacesMini();
-         FlowController.getInstance().numeros.add(4);
+        FlowController.getInstance().numeros.add(4);
         GetPasos();
+        IncreaseMovement();
     }
-
+    public void IncreaseMovement(){
+        movement=movement+1;
+        TextMov.setText("Movements: "+movement);
+    }
     @FXML
     private void unSolveCube(MouseEvent event) {
         ArrayList<Integer> numerosAuxiliar = new ArrayList<>();
@@ -391,15 +415,15 @@ public class VistaModelController implements Initializable {
         }
         Collections.shuffle(numerosAuxiliar);
         getMoviments(numerosAuxiliar, FlowController.getInstance().pila1, true);
-         FlowController.getInstance().numeros.addAll(numerosAuxiliar);
+        FlowController.getInstance().numeros.addAll(numerosAuxiliar);
         metodo();
     }
 
     @FXML
     private void solveCube(MouseEvent event) {
-        if (! FlowController.getInstance().numeros.isEmpty()) {
+        if (!FlowController.getInstance().numeros.isEmpty()) {
             metodo();
-            getMoviments( FlowController.getInstance().numeros, FlowController.getInstance().pila1, false);
+            getMoviments(FlowController.getInstance().numeros, FlowController.getInstance().pila1, false);
         } else {
             System.out.println("Alerta: Debes realizar algún movimiento.");
         }
@@ -415,7 +439,7 @@ public class VistaModelController implements Initializable {
     }
 
     public void metodo() {
-        FlowController.getInstance().pila1 = convertirListaEnPila( FlowController.getInstance().numeros);
+        FlowController.getInstance().pila1 = convertirListaEnPila(FlowController.getInstance().numeros);
     }
 
     public void getMoviments(ArrayList<Integer> listNum, Stack<Integer> pilaParametro, Boolean Solve) {
@@ -690,19 +714,70 @@ public class VistaModelController implements Initializable {
 
     @FXML
     private void help(MouseEvent event) {
-        
-      isHelpVisible = !isHelpVisible; 
-      imgHelp.setVisible(isHelpVisible);
-     
+
+        isHelpVisible = !isHelpVisible;
+        imgHelp.setVisible(isHelpVisible);
+
     }
 
     @FXML
     private void saveGame(MouseEvent event) {
-        TextCSV guardar = new TextCSV() ; 
-        
-        guardar.saveList( FlowController.getInstance().numeros);
+        TextCSV guardar = new TextCSV();
+
+        guardar.saveList(FlowController.getInstance().numeros);
         guardar.saveStack(FlowController.getInstance().pila1);
         guardar.saveCube(Cube);
+        currentPlayer.setMovements(movement);
+        currentPlayer.setTime(Cronometro.getText());
+        guardar.saveUser(currentPlayer);
+        FlowController.getInstance().goMain("MainView");
+
+    }
+
+    @FXML
+    private void Volver(MouseEvent event) {
+        FlowController.getInstance().goMain("MainView");
+    }
+
+    @FXML
+    private void Play(ActionEvent event) {
+
+        if (!TextField.getText().isEmpty()) {
+            currentPlayer.setName(TextField.getText());
+            ViewGame.toFront();
+            Jugador.setText("Jugador: " + currentPlayer.getName());
+            FlowController.getInstance().initializeCube();
+            PintarFaces();
+            PintarFacesMini();
+            Contador();
+            Cube3D();
+        }
+    }
+
+    @FXML
+    private void load(ActionEvent event) {
+        TextCSV load = new TextCSV();
+        currentPlayer=load.loadUser();
+        load.loadCube();
+        load.loadList();
+        load.loadStack();
+        Cronometro.setText(currentPlayer.getTime());
+        String[] time=currentPlayer.getTime().split(":");
+        movement=currentPlayer.getMovements();
+        minutos=Integer.parseInt(time[0]);
+        Segundos=Integer.parseInt(time[1]);
+        TextMov.setText("Movements: "+currentPlayer.getMovements());
+        ViewGame.toFront();
+        Jugador.setText("Jugador: " + currentPlayer.getName());
+        PintarFaces();
+        PintarFacesMini();
+        Contador();
+        Cube3D();
+    }
+
+    @FXML
+    private void NewGame(ActionEvent event) {
+        ViewName.toFront();
         
     }
 

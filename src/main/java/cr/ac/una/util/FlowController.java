@@ -9,6 +9,7 @@ import cr.ac.una.controller.Controller;
 import cr.ac.una.proyecto.App;
 import cr.ac.una.proyecto.model.Colors;
 import cr.ac.una.proyecto.model.CubeRubik;
+import cr.ac.una.proyecto.model.User;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,6 +36,8 @@ public class FlowController {
     public static ArrayList<Integer> numeros = new ArrayList<>();
     public static Stack<Colors> Aristas = new Stack<>();
     public static Stack<Colors> Esquinas = new Stack<>();
+    public static Stack<User> Players=new Stack<>();
+    
 
     private FlowController() {
         initializeCube();

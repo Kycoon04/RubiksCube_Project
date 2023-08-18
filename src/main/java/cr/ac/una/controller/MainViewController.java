@@ -1,6 +1,7 @@
 package cr.ac.una.controller;
 
 import cr.ac.una.proyecto.model.Colors;
+import cr.ac.una.proyecto.model.User;
 import cr.ac.una.util.FlowController;
 import cr.ac.una.util.TextCSV;
 import java.net.URL;
@@ -9,6 +10,8 @@ import java.util.Stack;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -20,9 +23,7 @@ public class MainViewController implements Initializable {
 
     @FXML
     private BorderPane ViewMain;
-    @FXML
     private BorderPane ViewName;
-    @FXML
     private TextField TextField;
     @FXML
     private GridPane Face2;
@@ -40,11 +41,24 @@ public class MainViewController implements Initializable {
     private BorderPane ViewCustome;
     @FXML
     private GridPane SetColor;
+    @FXML
+    private BorderPane ViewScores;
+    @FXML
+    private TableView<User> tabView_Scores;
+    @FXML
+    private TableColumn tabCol_User;
+    @FXML
+    private TableColumn tabCol_Movements;
+    @FXML
+    private TableColumn tabCol_Time;
+    @FXML
+    private TableColumn tabCol_Score;
     private Colors colors;
     private Boolean Bandera = true;
     private int t = 0;
     private Color ColorSelected = null;
     Stack<Colors> Filtro = new Stack<>();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -55,25 +69,7 @@ public class MainViewController implements Initializable {
     private void play(ActionEvent event) { 
         FlowController.getInstance().goMain("VistaModel");
     }
-    @FXML
-    private void load(ActionEvent event) {
-        
-        TextCSV load = new TextCSV (); 
-        load.loadCube(); 
-        load.loadList();
-        load.loadStack(); 
-        FlowController.getInstance().goMain("VistaModel");
-    }
-    @FXML
-    private void ColocarNombre(ActionEvent event) {
-        ViewName.toFront();
-    }
-
-    @FXML
-    private void Confirmar(ActionEvent event) {
-        FlowController.getInstance().setNombreJugador(TextField.getText());
-    }
-
+   
     @FXML
     private void Volver(MouseEvent event) {
         ViewMain.toFront();
@@ -139,7 +135,7 @@ public class MainViewController implements Initializable {
 
     public Rectangle Pintar(GridPane Face, int i, int j, int k) {
         Rectangle cell = new Rectangle(52, 52, getColorFromString(i, j, k));
-        cell.setStroke(Color.WHITE);
+        cell.setStroke(Color.GRAY);
         cell.setStrokeWidth(2);
         cell.setOnMouseClicked(event -> {
             if (ColorSelected != null) {
@@ -304,6 +300,11 @@ public class MainViewController implements Initializable {
     private void ResetCuboBase(ActionEvent event) {
         FlowController.getInstance().initializeCube();
         PintarFaces();
+    }
+
+    @FXML
+    private void viewScores(ActionEvent event) {
+        ViewScores.toFront();
     }
 
 }
