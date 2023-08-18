@@ -5,14 +5,19 @@ import cr.ac.una.proyecto.model.User;
 import cr.ac.una.util.FlowController;
 import cr.ac.una.util.TextCSV;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Stack;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -44,25 +49,32 @@ public class MainViewController implements Initializable {
     @FXML
     private BorderPane ViewScores;
     @FXML
-    private TableView<User> tabView_Scores;
+    private TableView<User> tabView_Scores= new TableView<>();
     @FXML
-    private TableColumn tabCol_User;
+    private TableColumn tabCol_User= new TableColumn<>();
     @FXML
-    private TableColumn tabCol_Movements;
+    private TableColumn tabCol_Movements= new TableColumn<>();
     @FXML
-    private TableColumn tabCol_Time;
+    private TableColumn tabCol_Time= new TableColumn<>();
     @FXML
-    private TableColumn tabCol_Score;
+    private TableColumn tabCol_Score= new TableColumn<>();
     private Colors colors;
     private Boolean Bandera = true;
     private int t = 0;
     private Color ColorSelected = null;
     Stack<Colors> Filtro = new Stack<>();
+     public static ObservableList<User> users;
+    public static List<User> userlist = new ArrayList<>();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        this.tabCol_User.setCellValueFactory(new PropertyValueFactory("name"));
+        this.tabCol_Movements.setCellValueFactory(new PropertyValueFactory("movements"));
+        this.tabCol_Time.setCellValueFactory(new PropertyValueFactory("time"));
+        this.tabCol_Score.setCellValueFactory(new PropertyValueFactory("score"));
         ViewMain.toFront();
+        
+        
     }
 
     @FXML
@@ -304,7 +316,27 @@ public class MainViewController implements Initializable {
 
     @FXML
     private void viewScores(ActionEvent event) {
+        TextCSV load=new TextCSV();
+        load.loadScoreUser();
+        listUsersScores();
         ViewScores.toFront();
+    }
+    public void listUsersScores(){
+        userlist.clear();
+        List<User> list=new ArrayList<>();
+        list.clear();
+        list=FlowController.getInstance().Players;
+        Import(list);
+        
+        users=FXCollections.observableArrayList(userlist);
+        this.tabView_Scores.refresh();
+        this.tabView_Scores.setItems(users);
+    }
+    public void Import(List<User> Users) {
+        for (int i = 0; i < Users.size(); i++) {
+            userlist.add(Users.get(i));
+            System.out.println(""+userlist.get(i).getName());
+        }
     }
 
 }

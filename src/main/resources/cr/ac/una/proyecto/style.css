@@ -92,5 +92,5 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 .table-view .table-cell {
-    -fx-text-fill:white; /* Color del texto de las celdas */
+    -fx-text-fill:black; /* Color del texto de las celdas */
 }

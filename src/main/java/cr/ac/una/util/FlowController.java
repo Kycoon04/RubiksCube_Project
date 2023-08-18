@@ -36,7 +36,7 @@ public class FlowController {
     public static ArrayList<Integer> numeros = new ArrayList<>();
     public static Stack<Colors> Aristas = new Stack<>();
     public static Stack<Colors> Esquinas = new Stack<>();
-    public static Stack<User> Players=new Stack<>();
+    public static ArrayList<User> Players=new ArrayList<>();
     
 
     private FlowController() {

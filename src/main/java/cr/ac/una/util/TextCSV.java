@@ -6,6 +6,7 @@ package cr.ac.una.util;
 
 import cr.ac.una.proyecto.model.CubeRubik;
 import cr.ac.una.proyecto.model.User;
+import static cr.ac.una.util.FlowController.Players;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -14,6 +15,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Stack;
 import javafx.collections.ObservableList;
@@ -32,6 +35,7 @@ public class TextCSV {
     CubeRubik[][][] cubeArray = new CubeRubik[3][3][3];
     Stack<Integer> Stackdata = new Stack<>();
     ArrayList<Integer> datalist = new ArrayList<>();
+    ArrayList<User> dataUser = new ArrayList<>();
 
     public String absolutePath(String filename) {
 
@@ -213,11 +217,69 @@ public class TextCSV {
                 currentUser.setTime(parts[2]);
                 currentUser.setScore(Integer.parseInt(parts[3]));
             }
-            
 
         } catch (IOException e) {
             e.printStackTrace();
         }
         return currentUser;
     }
+
+    public void addUser(User player) {
+        FlowController.getInstance().Players.add(player);
+
+        for (User user : Players) {
+            System.out.println("" + user.getName());
+        }
+
+    }
+
+    public void saveScoreUser(ArrayList<User> Userlist) {
+        String ruta = absolutePath("Users.txt");
+        try (FileWriter writer = new FileWriter(ruta)) {
+            for (User user : Userlist) {
+                //System.out.println(""+user.getName());
+                String line = user.getName();
+                line += ";" + user.getMovements();
+                line += ";" + user.getTime();
+                line += ";" + user.getScore();
+
+                writer.write(line + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void loadScoreUser() {
+
+        FlowController.getInstance().Players.clear();
+        User user;
+        String ruta = absolutePath("Users.txt");
+        String line;
+        try (BufferedReader reader = new BufferedReader(new FileReader(ruta))) {
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(";");
+                user = new User();
+                user.setName(parts[0]);
+                user.setMovements(Integer.parseInt(parts[1]));
+                user.setTime(parts[2]);
+                user.setScore(Integer.parseInt(parts[3]));
+                FlowController.getInstance().Players.add(user);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void sort(ArrayList list) {
+        Collections.sort(list, new Comparator<User>() {
+            @Override
+            public int compare(User user1, User user2) {
+                return Integer.valueOf(user2.getScore()).compareTo(user1.getScore());
+            }
+        });
+    }
+
 }

@@ -29,6 +29,8 @@ import javafx.scene.PerspectiveCamera;
 import javafx.scene.Scene;
 import javafx.scene.SceneAntialiasing;
 import javafx.scene.SubScene;
+import javafx.scene.control.Alert;
+import static javafx.scene.control.Alert.AlertType.INFORMATION;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -95,6 +97,12 @@ public class VistaModelController implements Initializable {
     private TextField TextField;
     @FXML
     private BorderPane ViewOpGame;
+    @FXML
+    private Text TextMov;
+    @FXML
+    private Label TextPlayer;
+    @FXML
+    private Label TextPoints;
     private boolean isHelpVisible = false;
     int HEIGHT = 620;
     int WEIGHT = 1180;
@@ -108,10 +116,10 @@ public class VistaModelController implements Initializable {
     private double anchorAngleY = 0;
     private final DoubleProperty angleX = new SimpleDoubleProperty(0);
     private final DoubleProperty angleY = new SimpleDoubleProperty(0);
-    private User currentPlayer = new User("Jugador1", 0, "0:00", 0);
-    private int movement=0;
+    private User currentPlayer = new User("Player1", 0, "0:00", 0);
+    private int movement = 0;
     @FXML
-    private Text TextMov;
+    private BorderPane ViewFinalGame;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -403,10 +411,12 @@ public class VistaModelController implements Initializable {
         GetPasos();
         IncreaseMovement();
     }
-    public void IncreaseMovement(){
-        movement=movement+1;
-        TextMov.setText("Movements: "+movement);
+
+    public void IncreaseMovement() {
+        movement = movement + 1;
+        TextMov.setText("Movements: " + movement);
     }
+
     @FXML
     private void unSolveCube(MouseEvent event) {
         ArrayList<Integer> numerosAuxiliar = new ArrayList<>();
@@ -745,7 +755,7 @@ public class VistaModelController implements Initializable {
         if (!TextField.getText().isEmpty()) {
             currentPlayer.setName(TextField.getText());
             ViewGame.toFront();
-            Jugador.setText("Jugador: " + currentPlayer.getName());
+            Jugador.setText("Player: " + currentPlayer.getName());
             FlowController.getInstance().initializeCube();
             PintarFaces();
             PintarFacesMini();
@@ -757,18 +767,18 @@ public class VistaModelController implements Initializable {
     @FXML
     private void load(ActionEvent event) {
         TextCSV load = new TextCSV();
-        currentPlayer=load.loadUser();
+        currentPlayer = load.loadUser();
         load.loadCube();
         load.loadList();
         load.loadStack();
         Cronometro.setText(currentPlayer.getTime());
-        String[] time=currentPlayer.getTime().split(":");
-        movement=currentPlayer.getMovements();
-        minutos=Integer.parseInt(time[0]);
-        Segundos=Integer.parseInt(time[1]);
-        TextMov.setText("Movements: "+currentPlayer.getMovements());
+        String[] time = currentPlayer.getTime().split(":");
+        movement = currentPlayer.getMovements();
+        minutos = Integer.parseInt(time[0]);
+        Segundos = Integer.parseInt(time[1]);
+        TextMov.setText("Movements: " + currentPlayer.getMovements());
         ViewGame.toFront();
-        Jugador.setText("Jugador: " + currentPlayer.getName());
+        Jugador.setText("Player: " + currentPlayer.getName());
         PintarFaces();
         PintarFacesMini();
         Contador();
@@ -778,7 +788,41 @@ public class VistaModelController implements Initializable {
     @FXML
     private void NewGame(ActionEvent event) {
         ViewName.toFront();
-        
+
+    }
+
+    @FXML
+    private void inspectCube(MouseEvent event) {
+        if (cubeSolved()) {
+            TextCSV save = new TextCSV();
+            save.loadScoreUser();
+            currentPlayer.setMovements(movement);
+            currentPlayer.setTime(Cronometro.getText());
+            currentPlayer.calculateScore();
+            save.addUser(currentPlayer);
+            save.sort(FlowController.getInstance().Players);
+            save.saveScoreUser(FlowController.getInstance().Players);
+            TextPlayer.setText("Player: " + currentPlayer.getName());
+            TextPoints.setText("Points: " + currentPlayer.getScore());
+            ViewFinalGame.toFront();
+        } else {
+            Alert alert = new Alert(INFORMATION);
+            alert.setTitle("Unsolved Cube");
+            alert.setHeaderText(null);
+            alert.setContentText("You must continue");
+            alert.show();
+        }
+    }
+
+    private boolean cubeSolved() {
+
+        return false;
+
+    }
+
+    @FXML
+    private void Exit(MouseEvent event) {
+        FlowController.getInstance().goMain("MainView");
     }
 
     class SmartGroup extends Group {

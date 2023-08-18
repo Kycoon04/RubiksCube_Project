@@ -4,6 +4,8 @@
  */
 package cr.ac.una.proyecto.model;
 
+import static java.lang.Math.pow;
+
 /**
  *
  * @author ander
@@ -56,7 +58,14 @@ public class User {
         return score;
     }
     
-    
+    public void calculateScore(){
+        String[] pTime=time.split(":");
+        int minutes=Integer.parseInt(pTime[0]);
+        int seconds=Integer.parseInt(pTime[1]);
+        minutes = (minutes*60)+seconds;
+        
+        score=(int)((pow(500,2)/minutes)-movements);
+    }
     
     
     
