@@ -1,6 +1,7 @@
 package cr.ac.una.controller;
 
 import cr.ac.una.proyecto.App;
+import cr.ac.una.proyecto.model.CubeRubik;
 import cr.ac.una.proyecto.model.Movements;
 import cr.ac.una.proyecto.model.User;
 import cr.ac.una.util.FlowController;
@@ -42,6 +43,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import static javafx.scene.paint.Color.WHITE;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
 import javafx.scene.shape.Rectangle;
@@ -793,6 +795,7 @@ public class VistaModelController implements Initializable {
 
     @FXML
     private void inspectCube(MouseEvent event) {
+       
         if (cubeSolved()) {
             TextCSV save = new TextCSV();
             save.loadScoreUser();
@@ -815,9 +818,21 @@ public class VistaModelController implements Initializable {
     }
 
     private boolean cubeSolved() {
+        boolean bandera = false;
+        FlowController.getInstance().initializeCubeCopy();
+        for (int i = 0; i < FlowController.getInstance().CubeCopy.length; i++) {
+            for (int j = 0; j < FlowController.getInstance().CubeCopy.length; j++) {
+                for (int z = 0; z < FlowController.getInstance().CubeCopy.length; z++) {
+                    if (FlowController.getInstance().CubeCopy[i][j][z].getColor_1().equals(FlowController.getInstance().Cube[i][j][z].getColor_1())) {
+                        bandera = true;
+                    } else {
+                        return false;
+                    }
+                }
 
-        return false;
-
+            }
+        }
+        return true; 
     }
 
     @FXML

@@ -31,6 +31,7 @@ public class FlowController {
     private static HashMap<String, FXMLLoader> loaders = new HashMap<>();
     private static String NombreJugador = "Jugador 1";
     public static CubeRubik[][][] Cube = new CubeRubik[3][3][3];
+    public static CubeRubik[][][] CubeCopy = new CubeRubik[3][3][3];
     public static Stack<Integer> pila1 = new Stack<>();
     public static Stack<Colors> Centro = new Stack<>();
     public static ArrayList<Integer> numeros = new ArrayList<>();
@@ -41,6 +42,7 @@ public class FlowController {
 
     private FlowController() {
         initializeCube();
+        initializeCubeCopy();
     }
 
     private static void CargarPilas() {
@@ -235,5 +237,36 @@ public class FlowController {
         Cube[2][1][1] = new CubeRubik("yellow", "Centro");
         Cube[1][2][1] = new CubeRubik("red", "Centro");
         Cube[1][1][2] = new CubeRubik("blue", "Centro");
+    }
+    public void initializeCubeCopy() {
+        CubeCopy[1][1][1] = new CubeRubik("white", "Centro");
+        CubeCopy[0][1][1] = new CubeRubik("white", "Centro");
+        CubeCopy[1][0][1] = new CubeRubik("orange", "Centro");
+        CubeCopy[1][1][0] = new CubeRubik("green", "Centro");
+        CubeCopy[2][1][1] = new CubeRubik("yellow", "Centro");
+        CubeCopy[1][2][1] = new CubeRubik("red", "Centro");
+        CubeCopy[1][1][2] = new CubeRubik("blue", "Centro");
+
+        CubeCopy[0][0][1] = new CubeRubik("white", "orange", "Arista");
+        CubeCopy[0][1][0] = new CubeRubik("white", "green", "Arista");
+        CubeCopy[0][1][2] = new CubeRubik("white", "blue", "Arista");
+        CubeCopy[0][2][1] = new CubeRubik("white", "red", "Arista");
+        CubeCopy[2][0][1] = new CubeRubik("orange", "yellow", "Arista");
+        CubeCopy[2][1][2] = new CubeRubik("blue", "yellow", "Arista");
+        CubeCopy[2][2][1] = new CubeRubik("red", "yellow", "Arista");
+        CubeCopy[2][1][0] = new CubeRubik("green", "yellow", "Arista");
+        CubeCopy[1][0][0] = new CubeRubik("orange", "green", "Arista");
+        CubeCopy[1][0][2] = new CubeRubik("orange", "blue", "Arista");
+        CubeCopy[1][2][2] = new CubeRubik("red", "blue", "Arista");
+        CubeCopy[1][2][0] = new CubeRubik("green", "red", "Arista");
+
+        CubeCopy[0][0][0] = new CubeRubik("white", "orange", "green", "Esquina");
+        CubeCopy[0][0][2] = new CubeRubik("white", "orange", "blue", "Esquina");
+        CubeCopy[0][2][0] = new CubeRubik("white", "green", "red", "Esquina");
+        CubeCopy[0][2][2] = new CubeRubik("white", "red", "blue", "Esquina");
+        CubeCopy[2][0][0] = new CubeRubik("orange", "green", "yellow", "Esquina");
+        CubeCopy[2][0][2] = new CubeRubik("orange", "blue", "yellow", "Esquina");
+        CubeCopy[2][2][0] = new CubeRubik("green", "red", "yellow", "Esquina");
+        CubeCopy[2][2][2] = new CubeRubik("red", "blue", "yellow", "Esquina");
     }
 }
